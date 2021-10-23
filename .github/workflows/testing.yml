@@ -37,7 +37,7 @@ jobs:
           retention-days: 1
 
   test:
-    needs: [install_dependencies]
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip]')"
 
     timeout-minutes: 15
     runs-on: ubuntu-latest
@@ -51,6 +51,8 @@ jobs:
         node-version: [14.17.0]
         ci_node_total: [8]
         ci_node_index: [0, 1, 2, 3, 4, 5, 6, 7]
+
+    needs: [install_dependencies]
 
     services:
       redis:
