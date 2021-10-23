@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/yonycalsin/testing-in-ci-with-mysql-and-nodejs/issues"
   },
-  "homepage": "https://github.com/yonycalsin/testing-in-ci-with-mysql-and-nodejs#readme"
+  "homepage": "https://github.com/yonycalsin/testing-in-ci-with-mysql-and-nodejs#readme",
+  "devDependencies": {
+    "ts-node": "^10.4.0"
+  }
 }
