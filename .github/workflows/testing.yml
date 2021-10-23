@@ -64,3 +64,22 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
+    steps:
+      - run: |
+          docker run \
+          --name mysql \
+          -e MYSQL_ALLOW_EMPTY_PASSWORD=yes \
+          -e MYSQL_DATABASE=testing_mysql_in_github_actions \
+          -e MYSQL_USER=yonycalsin \
+          -e MYSQL_PASSWORD=yonycalsin \
+          --health-cmd='mysqladmin ping' \
+          --health-interval=10s \
+          --health-timeout=5s \
+          --health-retries=5 \
+          -p 3306:3306 \
+          -d mysql:8.0.13 \
+          --sql-mode='' \
+          --default-authentication-plugin='mysql_native_password' \
+
+      - uses: actions/checkout@v2.1.1
